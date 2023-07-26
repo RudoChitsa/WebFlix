@@ -1,6 +1,11 @@
 <!--Script for register.php-->
 <?php
+require_once("includes/config.php");
 require_once("includes/classes/FormSanitizer.php");
+require_once("includes/classes/Account.php");
+require_once("includes/classes/Constants.php");
+
+	$account = new Account($con);
 
 	if(isset($_POST["submit"])) {
 		
@@ -11,6 +16,8 @@ require_once("includes/classes/FormSanitizer.php");
 		$email2 = FormSanitizer::sanitizeFormEmail($_POST["email2"]);
 		$password = FormSanitizer::sanitizeFormPassword($_POST["password"]);
 		$password2 = FormSanitizer::sanitizeFormPassword($_POST["password2"]);
+
+		$account->validateFirstName($firstName);
 
 	}
 	
@@ -32,6 +39,8 @@ require_once("includes/classes/FormSanitizer.php");
 				<span>to continue to WebFlix</span>
 			</div>
 			<form method="POST">
+
+				<?php echo $account->getError(Constants::$firstNameCharacters); ?>
 				<input type="text" name="firstName" placeholder="Enter First Name" required="">
 				<input type="text" name="lastName" placeholder="Enter Last Name" required="">
 				<input type="text" name="username" placeholder="Enter Username" required="">
@@ -43,13 +52,14 @@ require_once("includes/classes/FormSanitizer.php");
 					<input type="checkbox" name="termsAndConditions" id="checkbox" required>
 					<label for="checkbox">I agree to the <a href="legal.php" target="_blank">Terms And Conditions</a></label>
 				</div>
-				<input type="submit" name="submit" value="SUBMIT">
+				<input type="submit" id="btn" name="submit" value="SUBMIT">
 				
 			</form>
 
 			<!--Link To Register-->
-			<a href="login.php" class="loginMessage">Already Have An Account? Sign In Here!</a>
-			
+			<div class="loginmsg">
+				<a href="login.php" class="loginMessage">Already Have An Account? Sign In Here!</a>
+			</div>
 		</div>
 	</div>
 </body>

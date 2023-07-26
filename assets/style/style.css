@@ -56,6 +56,7 @@ body{
 	margin-top: 10px;
 	margin-bottom: 20px;
 	font-size: 16px;
+	text-align: center;
 
 }
 
@@ -82,24 +83,38 @@ body{
 	font-size: 13px;
 }
 
-.loginMessage {
-	text-decoration: none;
-	font-size: 14px;
-	font-weight: 400;
-
-}
 
 .column form input[type="checkbox"] {
 	height: 2em;
 	width: 2em;
-	vertical-align: middle;
 }
 
 .terms {
 	display: block;
 	padding: 1em;
 	margin: 2em;
-	border: 2px solid #ddd;
-	background-color: #eee;
-	max-width: 800px;
+	background-color: #FFCBCB;
+	width: auto;
+	text-align: center;
 }
+
+#btn {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.loginMessage {
+	text-decoration: none;
+}
+
+.loginmsg {
+	display: block;
+	padding: 1em;
+	margin: 2em;
+	background-color: #FFCBCB;
+	width: auto;
+	text-align: center;
+	font-size: 14px;
+	font-weight: 400;
+}
+

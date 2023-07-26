@@ -22,13 +22,14 @@
 			<form method="POST">
 				<input type="text" name="username" placeholder="Enter Username" required="">
 				<input type="password" name="password" placeholder="Enter Password" required="">
-				<input type="submit" name="submit" value="SUBMIT">
+				<input type="submit" id="btn" name="submit" value="SUBMIT">
 				
 			</form>
 
 			<!--Link To Register-->
-			<a href="register.php" class="loginMessage">No Account? Sign Up Here!</a>
-			
+			<div class="loginmsg">
+				<a href="register.php" class="loginMessage">No Account? Sign Up Here!</a>
+			</div>
 		</div>
 	</div>
 </body>
