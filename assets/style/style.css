@@ -1,0 +1,105 @@
+
+html,
+body{
+	height: 100%;
+	padding: 0;
+	margin: 0;
+}
+
+* {
+	font-family: Lucida Sans, Helvetica, Verdana;
+	color: #333;
+	box-sizing: border-box;
+}
+
+.SignInContainer {
+	background-color: #efefee;
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.column {
+	background-color: #fff;
+	min-height: 300px;
+	max-height: 100%;
+	width: 450px;
+	box-shadow: rgba(0.0.0. 0.1) 0 1px 5px;
+	padding: 20px 35px;
+	overflow-y: auto;
+
+}
+
+.column form {
+	display: flex;
+	padding-top: 20px;
+	flex-direction: column;
+}
+
+.column form input[type="text"], 
+.column form input[type="email"],
+.column form input[type="password"] {
+	font-size: 15px;
+	margin: 12px 0;
+	border: none;
+	border-bottom: 1px solid #dedede;
+}
+
+.column form input[type="submit"] {
+	background-color: #DB202C;
+	color: #fff;
+	height: 38px;
+	width: 90px;
+	border-radius: 4px;
+	font-weight: 500;
+	margin-top: 10px;
+	margin-bottom: 20px;
+	font-size: 16px;
+
+}
+
+
+.column .header {
+	padding: 20px 0;
+}
+
+.column .header h3 {
+	font-size: 25px;
+	font-weight: 400;
+	line-height:33px;
+	margin: 0;
+	padding-top: 17px;
+	color: #000;
+
+}
+
+.column .header img {
+	width: 100px;
+}
+
+.column .header span {
+	font-size: 13px;
+}
+
+.loginMessage {
+	text-decoration: none;
+	font-size: 14px;
+	font-weight: 400;
+
+}
+
+.column form input[type="checkbox"] {
+	height: 2em;
+	width: 2em;
+	vertical-align: middle;
+}
+
+.terms {
+	display: block;
+	padding: 1em;
+	margin: 2em;
+	border: 2px solid #ddd;
+	background-color: #eee;
+	max-width: 800px;
+}
