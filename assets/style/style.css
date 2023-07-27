@@ -118,3 +118,9 @@ body{
 	font-weight: 400;
 }
 
+.errorMessage {
+	color: #f00;
+	font-size: 13px;
+	font-weight: 400;
+	text-align: center;
+}
