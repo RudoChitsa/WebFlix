@@ -124,3 +124,14 @@ body{
 	font-weight: 400;
 	text-align: center;
 }
+
+.forgotpwd {
+	display: block;
+	padding: 1em;
+	margin: 2em;
+	background-color: #FFCBCB;
+	width: auto;
+	text-align: center;
+	font-size: 14px;
+	font-weight: 400;
+}

@@ -1,7 +1,24 @@
 <!--Script for register.php-->
 <?php
+
+require_once("includes/config.php");
+require_once("includes/classes/FormSanitizer.php");
+require_once("includes/classes/Account.php");
+require_once("includes/classes/Constants.php");
+
+	$account = new Account($con);
+
 	if(isset($_POST["submit"])) {
-		echo "form submitted";
+		
+		$username = FormSanitizer::sanitizeFormUsername($_POST["username"]);
+		
+		$password = FormSanitizer::sanitizeFormPassword($_POST["password"]);
+		
+		$success = $account->login($username, $password);
+ 
+		if($success) {
+			header("Location: index.php");
+		}
 	}
 ?>
 <!DOCTYPE html>
@@ -20,8 +37,13 @@
 				<span>to continue to WebFlix</span>
 			</div>
 			<form method="POST">
+				<?php echo $account->getError(Constants::$loginFailed); ?>
 				<input type="text" name="username" placeholder="Enter Username" required="">
 				<input type="password" name="password" placeholder="Enter Password" required="">
+				<!--forgotten password link-->
+				<div class="forgotpwd">
+					<a href="forgotpwd.php" class="loginMessage">Forgot Password? Click Here</a>
+				</div>
 				<input type="submit" id="btn" name="submit" value="SUBMIT">
 				
 			</form>
