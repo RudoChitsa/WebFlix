@@ -36,7 +36,7 @@ class Account {
 		if($query->rowCount() == 1) {
 			return true;
 		}
-		array_push($this->errorArray, Constants::$loginFailed);
+		array_push($this->errorArray, Constants::$loginFailed); 
 		return false;
 	}
 

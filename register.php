@@ -20,7 +20,14 @@ require_once("includes/classes/Constants.php");
 		$success = $account->register($firstName,$lastName, $username, $email, $email2, $password, $password2);
 
 		if($success) {
+			$_SESSION["userLoggedIn"] = $username;
 			header("Location: index.php");
+		}
+	}
+
+	function getInputValue($name) {
+		if(isset($_POST[$name])) {
+			echo $_POST[$name];
 		}
 	}
 	
@@ -44,20 +51,20 @@ require_once("includes/classes/Constants.php");
 			<form method="POST">
 
 				<?php echo $account->getError(Constants::$firstNameCharacters); ?>
-				<input type="text" name="firstName" placeholder="Enter First Name" required="">
+				<input type="text" name="firstName" value="<?php getInputValue("firstName") ?>" placeholder="Enter First Name" required="">
 
 				<?php echo $account->getError(Constants::$lastNameCharacters); ?>
-				<input type="text" name="lastName" placeholder="Enter Last Name" required="">
+				<input type="text" name="lastName" value="<?php getInputValue("lastName") ?>" placeholder="Enter Last Name" required="">
 
 				<?php echo $account->getError(Constants::$usernameCharacters); ?>
 				<?php echo $account->getError(Constants::$usernameTaken); ?>
-				<input type="text" name="username" placeholder="Enter Username" required="">
+				<input type="text" name="username" value="<?php getInputValue("username") ?>" placeholder="Enter Username" required="">
 
 				<?php echo $account->getError(Constants::$emailsDoNotMatch); ?>
 				<?php echo $account->getError(Constants::$invalidEmail); ?>
 				<?php echo $account->getError(Constants::$emailTaken); ?>
-				<input type="email" name="email" placeholder="Enter Email" required="">
-				<input type="email" name="email2" placeholder="Confirm Your Email" required="">
+				<input type="email" name="email" value="<?php getInputValue("email") ?>" placeholder="Enter Email" required="">
+				<input type="email" name="email2" value="<?php getInputValue("email2") ?>" placeholder="Confirm Your Email" required="">
 
 				<?php echo $account->getError(Constants::$passwordsDoNotMatch); ?>
 				<?php echo $account->getError(Constants::$passwordLength); ?>
