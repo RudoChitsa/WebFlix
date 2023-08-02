@@ -7,10 +7,15 @@ body{
 }
 
 * {
-	font-family: Lucida Sans, Helvetica, Verdana;
+	font-family: Arial, Helvetica, sans-serif;
 	color: #333;
 	box-sizing: border-box;
 }
+
+.wrapper {
+    min-height: 100%;
+}
+
 
 .SignInContainer {
 	background-color: #efefee;
@@ -143,7 +148,7 @@ body{
 
 .previewContainer {
 	position: relative; 
-	display: flex;
+	display: grid;
 }
 
 .previewOverlay {
@@ -189,4 +194,21 @@ button i {
 .mainDetails button:hover {
 	background-color: #e6e6e6;
 	color: #000;
+}
+
+.category {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 0;
+}
+
+.entities,
+.videos {
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+}
+
+.previewCategories {
+    padding: 0 50px;
 }

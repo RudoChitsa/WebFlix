@@ -2,6 +2,7 @@
 require_once("includes/config.php");
 require_once("includes/classes/PreviewProvider.php");
 require_once("includes/classes/entity.php");
+require_once("includes/classes/CategoryContainers.php");
 
 if(!isset($_SESSION["userLoggedIn"])) {
 	header("Location: register.php");
