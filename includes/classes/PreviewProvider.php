@@ -1,58 +1,106 @@
 <?php
+class PreviewProvider {
 
- class PreviewProvider {
+    private $con, $username;
 
- 	private $con;
- 	private $username;
+    public function __construct($con, $username) {
+        $this->con = $con;
+        $this->username = $username;
+    }
 
- 	public function __construct($con, $username) {
- 		$this->con = $con;
- 		$this->username = $username;
- 	}
+    public function createCategoryPreviewVideo($categoryId) {
+        $entitiesArray = EntityProvider::getEntities($this->con, $categoryId, 1);
 
- 	public function createPreviewVideo($entity) {
- 		if($entity == null) {
- 			$entity = $this->getRandomEntity();
- 		}
+        if(sizeof($entitiesArray) == 0) {
+            ErrorMessage::show("No TV shows to display");
+        }
 
- 		$id = $entity->getId();
- 		$name = $entity->getName();
- 		$preview = $entity->getPreview();
- 		$thumbnail = $entity->getThumbnail();
- 		
- 		//echo "<img src='$thumbnail'>";
- 		return "<div class='previewContainer'>
+        return $this->createPreviewVideo($entitiesArray[0]);
+    }
 
- 			<img src='$thumbnail' class='previewImage' hidden>
+    public function createTVShowPreviewVideo() {
+        $entitiesArray = EntityProvider::getTVShowEntities($this->con, null, 1);
 
- 			<video autoplay muted class='previewVideo' onended='previewEnded()'>
- 				<source src='$preview' type='video/mp4'>
- 			</video>
+        if(sizeof($entitiesArray) == 0) {
+            ErrorMessage::show("No TV shows to display");
+        }
 
- 			<div class='previewOverlay'>
- 				<div class='mainDetails'>
- 					<h3>$name</h3>
+        return $this->createPreviewVideo($entitiesArray[0]);
+    }
 
- 					<div class='buttons'>
- 						<button><i class='fa-solid fa-play'></i> Play</button>
- 						<button onclick='volumeToggle(this)'><i class='fa-solid fa-volume-xmark'></i></button>
- 					</div>
+    public function createMoviesPreviewVideo() {
+        $entitiesArray = EntityProvider::getMoviesEntities($this->con, null, 1);
 
- 				</div>
- 			</div
+        if(sizeof($entitiesArray) == 0) {
+            ErrorMessage::show("No movies to display");
+        }
 
- 		</div>";
+        return $this->createPreviewVideo($entitiesArray[0]);
+    }
 
- 	}
- 	private function getRandomEntity() {
+    public function createPreviewVideo($entity) {
+        
+        if($entity == null) {
+            $entity = $this->getRandomEntity();
+        }
 
- 		$query = $this->con->prepare("SELECT * FROM entities ORDER BY RAND() LIMIT 1");
- 		$query->execute();
+        $id = $entity->getId();
+        $name = $entity->getName();
+        $preview = $entity->getPreview();
+        $thumbnail = $entity->getThumbnail();
 
- 		$row = $query->fetch(PDO::FETCH_ASSOC);
+        $videoId = VideoProvider::getEntityVideoForUser($this->con, $id, $this->username);
+        $video = new Video($this->con, $videoId);
+        
+        $inProgress = $video->isInProgress($this->username);
+        $playButtonText = $inProgress ? "Continue watching" : "Play";
 
- 		return new Entity($this->con, $row);
+        $seasonEpisode = $video->getSeasonAndEpisode();
+        $subHeading = $video->isMovie() ? "" : "<h4>$seasonEpisode</h4>";
 
- 	}
- }
+        return "<div class='previewContainer'>
+
+                    <img src='$thumbnail' class='previewImage' hidden>
+
+                    <video autoplay muted class='previewVideo' onended='previewEnded()'>
+                        <source src='$preview' type='video/mp4'>
+                    </video>
+
+                    <div class='previewOverlay'>
+                        
+                        <div class='mainDetails'>
+                            <h3>$name</h3>
+                            $subHeading
+                            <div class='buttons'>
+                                <button onclick='watchVideo($videoId)'><i class='fas fa-play'></i> $playButtonText</button>
+                                <button onclick='volumeToggle(this)'><i class='fas fa-volume-mute'></i></button>
+                            </div>
+
+                        </div>
+
+                    </div>
+        
+                </div>";
+
+    }
+
+    public function createEntityPreviewSquare($entity) {
+        $id = $entity->getId();
+        $thumbnail = $entity->getThumbnail();
+        $name = $entity->getName();
+
+        return "<a href='entity.php?id=$id'>
+                    <div class='previewContainer small'>
+                        <img src='$thumbnail' title='$name'>
+                    </div>
+                </a>";
+    }
+
+    private function getRandomEntity() {
+
+        $entity = EntityProvider::getEntities($this->con, null, 1);
+        return $entity[0];
+    }
+
+}
 ?>

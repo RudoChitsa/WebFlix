@@ -1,15 +1,13 @@
 <?php
-ob_start(); //turns on output buffering
-session_start(); //starts the session
+ob_start(); // Turns on output buffering
+session_start();
 
-date_default_timezone_set("Africa/Harare");
+date_default_timezone_set("Europe/London");
 
-try{
-	$con = new PDO("mysql:dbname=webflix; host=localhost", "root", "");
-	$con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
+try {
+    $con = new PDO("mysql:dbname=webflix;host=localhost", "root", "");
+    $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
 }
-catch(PDOException $e) {
-	exit("Connection Failed: " . $e->getMessage());
+catch (PDOException $e) {
+    exit("Connection failed: " . $e->getMessage());
 }
-
-?>
