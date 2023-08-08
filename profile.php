@@ -124,27 +124,6 @@ if (isset($_GET['success']) && $_GET['success'] == 'true') {
     </div>
 
     <div class="formSection">
-
-        <form method="POST">
-
-            <h2>Update password</h2>
-
-            <input type="password" name="oldPassword" placeholder="Old password">
-            <input type="password" name="newPassword" placeholder="New password">
-            <input type="password" name="newPassword2" placeholder="Confirm new password">
-
-            <div class="message">
-                <?php echo $passwordMessage; ?>
-            </div>
-
-            <input type="submit" name="savePasswordButton" value="Save">
-
-
-        </form>
-
-    </div>
-
-    <div class="formSection">
         <h2>Subscription</h2>
 
         <div class="message">
@@ -162,4 +141,35 @@ if (isset($_GET['success']) && $_GET['success'] == 'true') {
         ?>
     </div>
 
+
+    <div class="formSection">
+
+        <form method="POST">
+
+            <h2>Update password</h2>
+
+            <input type="password" name="oldPassword" placeholder="Old password">
+            <input type="password" name="newPassword" placeholder="New password">
+            <input type="password" name="newPassword2" placeholder="Confirm new password">
+
+            <div class="message">
+                <?php echo $passwordMessage; ?>
+            </div>
+
+            <input type="submit" name="savePasswordButton" value="Save">
+        </form>
+    </div>    
 </div>
+
+    <ul class="navLinks">
+        <li><a href="legal.php">Investor Relations</a></li>
+        <li><a href="legal.php">Privacy</a></li>
+        <li><a href="movies.php">Speed Test</a></li>
+        <li><a href="contact.php">Help Centre</a></li>
+        <li><a href="legal.php">Cookie Preferences</a></li>
+        <li><a href="legal.php">Legal Notices</a></li>
+        <li><a href="profile.php">Account</a></li>
+        <li><a href="contact.php">Terms of Use</a></li>
+        <li><a href="index.html#faq">FAQs</a></li>
+        <li><a href="contact.php">Contact Us</a></li>
+ <br><br>        

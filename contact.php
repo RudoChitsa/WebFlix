@@ -119,6 +119,18 @@ if (isset($_GET['success']) && $_GET['success'] == 'true') {
 
         </form>
 
+        <br>
+     <div class="rightItems1">   
+        <a href="https:wa.me/+263773856719">
+            <i class="fa fa-whatsapp">  Whatsapp Us</i>
+        </a>
+        <br>
+        <br>
+        <a href="tel:+263773856719">
+            <i class="fa fa-phone"> Call Us</i>
+        </a>
+    </div>
+
     </div>
     <?php
 if(isset($_POST['submit'])) {
@@ -130,7 +142,7 @@ if(isset($_POST['submit'])) {
     $topic = "From: " . $email;
     $message1 = "you have received a message from " . $email . " " . $message;
     mail($myMail, $topic, $message1);
-    header("Location: index.php?mailsent");
+    header("Location: main.php?mailsent");
 
 }
 ?>
@@ -157,7 +169,7 @@ if(isset($_POST['submit'])) {
     </div>
 
 -->
-<!--
+
     <div class="formSection">
         <h2>Subscription</h2>
 
@@ -178,4 +190,4 @@ if(isset($_POST['submit'])) {
     </div>
 
 </div>
--->
+<?php require_once("includes/footer.php");?>

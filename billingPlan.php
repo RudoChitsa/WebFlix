@@ -12,7 +12,7 @@ use PayPal\Common\PayPalModel;
 // Create a new billing plan
 $plan = new Plan();
 $plan->setName('Webflix monthly subscription')
-  ->setDescription('Gets you all the features of our site.')
+  ->setDescription('For All Features.')
   ->setType('INFINITE');
 
 // Set billing plan definitions
@@ -21,7 +21,7 @@ $paymentDefinition->setName('Regular Payments')
   ->setType('REGULAR')
   ->setFrequency('Month')
   ->setFrequencyInterval('1')
-  ->setAmount(new Currency(array('value' => 9.99, 'currency' => 'GBP')));
+  ->setAmount(new Currency(array('value' => 10, 'currency' => 'USD')));
 
 $currentUrl = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 $returnUrl = str_replace("billing.php", "profile.php", $currentUrl);
@@ -33,7 +33,7 @@ $merchantPreferences->setReturnUrl($returnUrl . "?success=true")
   ->setAutoBillAmount('yes')
   ->setInitialFailAmountAction('CONTINUE')
   ->setMaxFailAttempts('0')
-  ->setSetupFee(new Currency(array('value' => 9.99, 'currency' => 'GBP')));
+  ->setSetupFee(new Currency(array('value' => 10, 'currency' => 'USD')));
 
 $plan->setPaymentDefinitions(array($paymentDefinition));
 $plan->setMerchantPreferences($merchantPreferences);

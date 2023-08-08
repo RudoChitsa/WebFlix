@@ -18,7 +18,7 @@ require_once("includes/classes/Constants.php");
  
         if($success) {
             $_SESSION["userLoggedIn"] = $username;
-            header("Location: index.php");
+            header("Location: main.php");
         }
     }
 
@@ -41,15 +41,15 @@ require_once("includes/classes/Constants.php");
             <div class="header">
                 <img src="assets/images/logo.png" title="webflix-logo" alt="Webflix-Logo" />
                 <h3>Sign In</h3>
-                <span>to continue to WebFlix</span>
+                <span style="color: #313639;">to continue to WebFlix</span>
             </div>
             <form method="POST">
-                <?php echo $account->getError(Constants::$loginFailed); ?>
-                <input type="text" name="username" placeholder="Enter Username" value="<?php getInputValue("username") ?>" required="">
-                <input type="password" name="password" placeholder="Enter Password" required="">
+                <?php echo $account->getError(Constants::$passwordIncorrect); ?>
+                <input type="text" style="color: #313639;" name="username" placeholder="Enter Username" value="<?php getInputValue("username") ?>" required="">
+                <input type="password" style="color: #313639;" name="password" placeholder="Enter Password" required="">
                 <!--forgotten password link-->
                 <div class="forgotpwd">
-                    <a href="forgotpwd.php" class="loginMessage">Forgot Password? Click Here</a>
+                    <a href="forgotpwd.php" style="color: #313639;" class="loginMessage">Forgot Password? Click Here</a>
                 </div>
                 <input type="submit" id="btn" name="submit" value="SUBMIT">
                 
@@ -57,7 +57,7 @@ require_once("includes/classes/Constants.php");
 
             <!--Link To Register-->
             <div class="loginmsg">
-                <a href="register.php" class="loginMessage">No Account? Sign Up Here!</a>
+                <a href="register.php" class="loginMessage" style="color: #313639;">No Account? Sign Up Here!</a>
             </div>
         </div>
     </div>

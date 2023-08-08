@@ -21,7 +21,7 @@ require_once("includes/classes/Constants.php");
 
         if($success) {
             $_SESSION["userLoggedIn"] = $username;
-            header("Location: index.php");
+            header("Location: profile.php");
         }
     }
 
@@ -46,33 +46,33 @@ require_once("includes/classes/Constants.php");
             <div class="header">
                 <img src="assets/images/logo.png" title="webflix-logo" alt="Webflix-Logo" />
                 <h3>Sign Up Today</h3>
-                <span>to continue to WebFlix</span>
+                <span style="color: #313639;">to continue to WebFlix</span>
             </div>
             <form method="POST">
 
                 <?php echo $account->getError(Constants::$firstNameCharacters); ?>
-                <input type="text" name="firstName" value="<?php getInputValue("firstName") ?>" placeholder="Enter First Name" required="">
+                <input type="text" style="color: #313639;" name="firstName" value="<?php getInputValue("firstName") ?>" placeholder="Enter First Name" required="">
 
                 <?php echo $account->getError(Constants::$lastNameCharacters); ?>
-                <input type="text" name="lastName" value="<?php getInputValue("lastName") ?>" placeholder="Enter Last Name" required="">
+                <input type="text" style="color: #313639;" name="lastName" value="<?php getInputValue("lastName") ?>" placeholder="Enter Last Name" required="">
 
                 <?php echo $account->getError(Constants::$usernameCharacters); ?>
                 <?php echo $account->getError(Constants::$usernameTaken); ?>
-                <input type="text" name="username" value="<?php getInputValue("username") ?>" placeholder="Enter Username" required="">
+                <input type="text" style="color: #313639;" name="username" value="<?php getInputValue("username") ?>" placeholder="Enter Username" required="">
 
                 <?php echo $account->getError(Constants::$emailsDoNotMatch); ?>
                 <?php echo $account->getError(Constants::$invalidEmail); ?>
                 <?php echo $account->getError(Constants::$emailTaken); ?>
-                <input type="email" name="email" value="<?php getInputValue("email") ?>" placeholder="Enter Email" required="">
-                <input type="email" name="email2" value="<?php getInputValue("email2") ?>" placeholder="Confirm Your Email" required="">
+                <input type="email" style="color: #313639;" name="email" value="<?php getInputValue("email") ?>" placeholder="Enter Email" required="">
+                <input type="email" style="color: #313639;" name="email2" value="<?php getInputValue("email2") ?>" placeholder="Confirm Your Email" required="">
 
                 <?php echo $account->getError(Constants::$passwordsDoNotMatch); ?>
                 <?php echo $account->getError(Constants::$passwordLength); ?>
-                <input type="password" name="password" placeholder="Enter Password" required="">
-                <input type="password" name="password2" placeholder="Confirm Your Password" required="">
+                <input type="password" style="color: #313639;" name="password" placeholder="Enter Password" required="">
+                <input type="password" style="color: #313639;" name="password2" placeholder="Confirm Your Password" required="">
                 <div class="terms">
                     <input type="checkbox" name="termsAndConditions" id="checkbox" required>
-                    <label for="checkbox">I agree to the <a href="legal.php" target="_blank">Terms And Conditions</a></label>
+                    <label for="checkbox" style="color: #313639;">I agree to the <a href="legal.php" target="_blank" style="color: #313639;">Terms And Conditions</a></label>
                 </div>
                 <input type="submit" id="btn" name="submit" value="SUBMIT">
                 
@@ -80,7 +80,7 @@ require_once("includes/classes/Constants.php");
 
             <!--Link To Register-->
             <div class="loginmsg">
-                <a href="login.php" class="loginMessage">Already Have An Account? Sign In Here!</a>
+                <a href="login.php" style="color: #313639;" class="loginMessage">Already Have An Account? Sign In Here!</a>
             </div>
         </div>
     </div>

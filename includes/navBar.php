@@ -1,13 +1,13 @@
 <div class="topBar">
 
     <div class="logoContainer">
-        <a href="index.php">
+        <a href="main.php">
             <img src="assets/images/logo.png" alt="Logo">
         </a>
     </div>
 
     <ul class="navLinks">
-        <li><a href="index.php">Home</a></li>
+        <li><a href="main.php">Home</a></li>
         <li><a href="shows.php">TV Shows</a></li>
         <li><a href="movies.php">Movies</a></li>
         <li><a href="contact.php">Contact Us</a></li>
