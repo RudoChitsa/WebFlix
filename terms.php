@@ -1,124 +1,16 @@
-<?php
-require_once("includes/header.php");
-require_once("includes/paypalConfig.php");
-require_once("includes/classes/Account.php");
-require_once("includes/classes/FormSanitizer.php");
-require_once("includes/classes/Constants.php");
-require_once("includes/classes/BillingDetails.php");
-
-$user = new User($con, $userLoggedIn);
-
-$detailsMessage = "";
-$passwordMessage = "";
-$subscriptionMessage = "";
-
-if(isset($_POST["saveDetailsButton"])) {
-    $account = new Account($con);
-
-    $firstName = FormSanitizer::sanitizeFormString($_POST["firstName"]);
-    $lastName = FormSanitizer::sanitizeFormString($_POST["lastName"]);
-    $email = FormSanitizer::sanitizeFormEmail($_POST["email"]);
-
-    if($account->updateDetails($firstName, $lastName, $email, $userLoggedIn)) {
-        $detailsMessage = "<div class='alertSuccess'>
-                                Details updated successfully!
-                            </div>";
-    }
-    else {
-        $errorMessage = $account->getFirstError();
-
-        $detailsMessage = "<div class='alertError'>
-                                $errorMessage
-                            </div>";
-    }
-}
-
-if(isset($_POST["savePasswordButton"])) {
-    $account = new Account($con);
-
-    $oldPassword = FormSanitizer::sanitizeFormPassword($_POST["oldPassword"]); 
-    $newPassword = FormSanitizer::sanitizeFormPassword($_POST["newPassword"]);
-    $newPassword2 = FormSanitizer::sanitizeFormPassword($_POST["newPassword2"]);
-
-    if($account->updatePassword($oldPassword, $newPassword, $newPassword2, $userLoggedIn)) {
-        $passwordMessage = "<div class='alertSuccess'>
-                                Password updated successfully!
-                            </div>";
-    }
-    else {
-        $errorMessage = $account->getFirstError();
-
-        $passwordMessage = "<div class='alertError'>
-                                $errorMessage
-                            </div>";
-    }
-}
-
-if (isset($_GET['success']) && $_GET['success'] == 'true') {
-    $token = $_GET['token'];
-    $agreement = new \PayPal\Api\Agreement();
-
-    $subscriptionMessage = "<div class='alertError'>
-                            Something went wrong!
-                        </div>";
-  
-    try {
-      // Execute agreement
-      $agreement->execute($token, $apiContext);
-
-        $result = BillingDetails::insertDetails($con, $agreement, $token, $userLoggedIn);
-        $result = $result && $user->setIsSubscribed(1);
-
-        if($result) {
-            $subscriptionMessage = "<div class='alertSuccess'>
-                            You're all signed up!
-                        </div>";
-        }
-
-
-    } catch (PayPal\Exception\PayPalConnectionException $ex) {
-      echo $ex->getCode();
-      echo $ex->getData();
-      die($ex);
-    } catch (Exception $ex) {
-      die($ex);
-    }
-  } 
-  else if (isset($_GET['success']) && $_GET['success'] == 'false') {
-    $subscriptionMessage = "<div class='alertError'>
-                            User cancelled or something went wrong!
-                        </div>";
-  }
-
-?>
-
-<div class="settingsContainer column">
-
-    <div class="formSection">
-
-        <form method="POST">
-
-            
-            
-            <?php
-
-            $firstName = isset($_POST["firstName"]) ? $_POST["firstName"] : $user->getFirstName();
-            $lastName = isset($_POST["lastName"]) ? $_POST["lastName"] : $user->getLastName();
-            $email = isset($_POST["email"]) ? $_POST["email"] : $user->getEmail();
-            ?>
-
-            <h2>Hi <?php echo $firstName." ".$lastName; ?></h2>
-
-        </form>
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <link rel="stylesheet" type="text/css" href="assets/style/style.css">
+</head>
+<body style="background-color: #808080; margin: 30px;">
 
         <br>
-     <h4 id="investor">Investor Relations</h4>
-     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-     tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-     quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-     consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-     cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-     proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <div class="loginmsg">
+                <a href="register.php" class="loginMessage" style="color: #313639;">Back to Register Page</a>
+            </div>
+     
      <h4 id="privacy">Privacy</h4>
      <style>
   [data-custom-class='body'], [data-custom-class='body'] * {
@@ -228,71 +120,26 @@ word-break: break-word !important;
       }
     </style>
       </div>
-     <h4 id="notices">Legal Notice</h4>
-     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-     tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-     quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-     consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-     cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-     proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-     <h4 id="terms">Terms Of Use</h4>
-     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-     tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-     quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-     consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-     cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-     proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-     <h4 id="notices">Disclaimer</h4>
-     <p>WebFlix will not be responsible or held liability for any exclusions, inaccuracies or errors on the platform and that the content on the platform has no assurance of correctness, comprehensiveness or timeliness.</p>
+     <h4 id="notices" style="color: #fff;">Legal Notice</h4>
+     <p style="color: #fff;">Right to appeal
+
+If we decline to take action regarding your request, we will inform you of our decision and reasoning behind it. If you wish to appeal our decision, please email us . Within sixty (60) days of receipt of an appeal, we will inform you in writing of any action taken or not taken in response to the appeal, including a written explanation of the reasons for the decisions. If your appeal if denied, you may contact the Attorney General to submit a complaint.</p>
+     <h4 id="terms" style="color: #fff;">Terms Of Use</h4>
+     <p style="color: #fff;>Webflix provides a personalized subscription service that allows our members to access entertainment content over the Internet. your membership will continue until it is terminated. we do billig on the exact same date of subcription on each month and the user can activate recurring billing on the payment platform</p>
+     <h4 id="notices" style="color: #fff;">Disclaimer</h4>
+     <p style="color: #fff;">WebFlix will not be responsible or held liability for any exclusions, inaccuracies or errors on the platform and that the content on the platform has no assurance of correctness, comprehensiveness or timeliness.</p>
+     <h4 id="investor" style="color: #fff;">Investor Relations</h4>
+     <p style="color: #fff;">WebFlix is still looking for investors to partner with</p>
 
     </div>
-    <?php
-if(isset($_POST['submit'])) {
-    $name = $firstName;
-    $email = $email;
-    $message = trim($_POST['message']);
-
-    $myMail = "rudochitsa@gmail.com";
-    $topic = "From: " . $email;
-    $message1 = "you have received a message from " . $email . " " . $message;
-    mail($myMail, $topic, $message1);
-    header("Location: main.php?mailsent");
-
-}
-?>
-
-   <!-- <div class="formSection">
-
-        <form method="POST">
-
-            <h2>Update password</h2>
-
-            <input type="password" name="oldPassword" placeholder="Old password">
-            <input type="password" name="newPassword" placeholder="New password">
-            <input type="password" name="newPassword2" placeholder="Confirm new password">
-
-            <div class="message">
-                <?php echo $passwordMessage; ?>
+    <br>
+        <div class="loginmsg">
+                <a href="register.php" class="loginMessage" style="color: #313639; font-weight: 30px;">Back to Register Page</a>
             </div>
 
-            <input type="submit" name="savePasswordButton" value="Save">
 
 
-        </form>
 
-    </div>
-
--->
-<h5></h5>
-<ul class="navLinks">
-        <li><a href="legal.php#investor">Investor Relations</a></li>
-        <li><a href="legal.php#privacy">Privacy</a></li>
-        <li><a href="movies.php">Speed Test</a></li>
-        <li><a href="contact.php">Help Centre</a></li>
-        <li><a href="legal.php#cookie">Cookie Preferences</a></li>
-        <li><a href="legal.php#notices">Legal Notices</a></li>
-        <li><a href="profile.php">Account</a></li>
-        <li><a href="legal.php#terms">Terms of Use</a></li>
-        <li><a href="index.html#faq">FAQs</a></li>
-        <li><a href="contact.php">Contact Us</a></li>
  <br><br> 
+</body>
+</html>

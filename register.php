@@ -72,7 +72,7 @@ require_once("includes/classes/Constants.php");
                 <input type="password" style="color: #313639;" name="password2" placeholder="Confirm Your Password" required="">
                 <div class="terms">
                     <input type="checkbox" name="termsAndConditions" id="checkbox" required>
-                    <label for="checkbox" style="color: #313639;">I agree to the <a href="legal.php" target="_blank" style="color: #313639;">Terms And Conditions</a></label>
+                    <label for="checkbox" style="color: #313639;">I agree to the <a href="terms.php" target="blank" style="color: #313639;">Terms And Conditions</a></label>
                 </div>
                 <input type="submit" id="btn" name="submit" value="SUBMIT">
                 

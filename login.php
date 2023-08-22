@@ -44,12 +44,14 @@ require_once("includes/classes/Constants.php");
                 <span style="color: #313639;">to continue to WebFlix</span>
             </div>
             <form method="POST">
+                <?php echo $account->getError(Constants::$loginFailed); ?>
                 <?php echo $account->getError(Constants::$passwordIncorrect); ?>
+
                 <input type="text" style="color: #313639;" name="username" placeholder="Enter Username" value="<?php getInputValue("username") ?>" required="">
                 <input type="password" style="color: #313639;" name="password" placeholder="Enter Password" required="">
                 <!--forgotten password link-->
                 <div class="forgotpwd">
-                    <a href="forgotpwd.php" style="color: #313639;" class="loginMessage">Forgot Password? Click Here</a>
+                    <a href="forgot_password.php" style="color: #313639;" class="loginMessage">Forgot Password? Click Here</a>
                 </div>
                 <input type="submit" id="btn" name="submit" value="SUBMIT">
                 
