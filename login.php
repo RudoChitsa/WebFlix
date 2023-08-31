@@ -1,4 +1,4 @@
-<!--Script for register.php-->
+<!--Script for login.php-->
 <?php
 
 require_once("includes/config.php");

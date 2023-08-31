@@ -10,7 +10,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     if (mysqli_num_rows($details)>0) { //if the given email is in database, ie. registered
         $message_success=" Please check your email inbox or spam folder and follow the steps";
         //generating the random key
-        $key=md5(time()+123456789% rand(4000, 55000000));
+        $key=(time()+123456789% rand(4000, 55000000));
         //insert this temporary key into database
         $sql_insert=mysqli_query($dbconfig,"INSERT INTO forget_password(email,temp_key) VALUES('$email_reg','$key')");
         //sending email about update
