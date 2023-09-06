@@ -24,7 +24,6 @@ Please make sure to update tests as appropriate.
 
 [MIT](https://choosealicense.com/licenses/mit/)
 
-<
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
@@ -98,7 +97,7 @@ This section should list any major frameworks/libraries used to bootstrap the pr
 
 * [![PHP][PHP]][php.net]
 * [![JavaScript][javascript]][javascript.com]
-* [![MySQL][MySQL]][mysql.ccom]
+* [![MySQL][MySQL]][mysql.com]
 * [![Angular][Angular.io]][Angular-url]
 * [![HTML][HTML]][html.com]
 * [![Bootstrap][Bootstrap.com]][Bootstrap-url]
