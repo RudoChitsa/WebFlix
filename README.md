@@ -90,19 +90,14 @@ This section should list any major frameworks/libraries used to bootstrap the pr
 <!-- GETTING STARTED -->
 ## Getting Started
 
-Get XAMPP at https://www.apachefriends.org/download.html
-Install XAMPP
-In the XAMPP folder, go to htdocs folder.
-in htdocs is where the project file will be located.
+Get XAMPP at https://www.apachefriends.org/download.html <br>
+Install XAMPP <br>
+In the XAMPP folder, go to htdocs folder. <br>
+in htdocs is where the project file will be located. <br>
 Create a folder with your project name
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
 
 ### Installation
 
@@ -121,9 +116,7 @@ _Below is an example of how you can instruct your audience on installing and set
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
 
-_For more examples, please refer to the [Documentation](https://example.com)_
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
