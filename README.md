@@ -1,33 +1,4 @@
-# WebFlix
 
-WebFlix is a video streaming web application
-
-## Languages
-
-PHP
-MySQL
-HTML
-CSS
-JavaScript
-
-
-## Usage
-
-## Contributing
-
-Pull requests are welcome. For major changes, please open an issue first
-to discuss what you would like to change.
-
-Please make sure to update tests as appropriate.
-
-## License
-
-[MIT](https://choosealicense.com/licenses/mit/)
-
-
-
-
-<br />
 <div align="center">
   <a href="[https://github.com/RudoChitsa/WebFlix]">
     <img src="assets/images/logo.png" alt="Logo" width="80" height="80">
@@ -75,6 +46,14 @@ WebFlix www.webflix.digital
 This is a video streaming project.
 
 ### Built With
+
+## Languages
+
+PHP
+MySQL
+HTML
+CSS
+JavaScript
 
 This section should list any major frameworks/libraries used to bootstrap the project. 
 
@@ -137,7 +116,9 @@ See the [open issues](https://github.com/othneildrew/Best-README-Template/issues
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+## License
 
+[MIT](https://choosealicense.com/licenses/mit/)
 
 <!-- CONTRIBUTING -->
 ## Contributing
