@@ -24,13 +24,6 @@ Please make sure to update tests as appropriate.
 
 [MIT](https://choosealicense.com/licenses/mit/)
 
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
-
 
 
 
@@ -44,16 +37,6 @@ Please make sure to update tests as appropriate.
 
   <p align="center">
 
-    <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the docs »</strong></a>
-    <br />
-    <br />
-    <a href="https://webflix.digital">View Demo</a>
-    ·
-    <a href="https://webflix.digital/contact.php">Report Bug</a>
-    ·
-    <a href="https://webflix.digital/contact.php">Request Feature</a>
-  </p>
-</div>
 
 
 
@@ -95,11 +78,8 @@ This is a video streaming project.
 
 This section should list any major frameworks/libraries used to bootstrap the project. 
 
-* [![PHP][PHP]][php.net]
-* [![JavaScript][javascript]][javascript.com]
-* [![MySQL][MySQL]][mysql.com]
+
 * [![Angular][Angular.io]][Angular-url]
-* [![HTML][HTML]][html.com]
 * [![Bootstrap][Bootstrap.com]][Bootstrap-url]
 * [![JQuery][JQuery.com]][JQuery-url]
 
